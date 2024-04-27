@@ -1,6 +1,7 @@
 #ifndef THREADS_THREAD_H
 #define THREADS_THREAD_H
 
+
 #include <debug.h>
 #include <list.h>
 #include <stdint.h>
@@ -80,6 +81,8 @@ typedef int tid_t;
    only because they are mutually exclusive: only a thread in the
    ready state is on the run queue, whereas only a thread in the
    blocked state is on a semaphore wait list. */
+
+
 struct thread
   {
     /* Owned by thread.c. */
@@ -92,6 +95,12 @@ struct thread
 
     /* Shared between thread.c and synch.c. */
     struct list_elem elem;              /* List element. */
+
+    int nice;
+    int recent_cpu; //--> we will use fns in fixed-point.h
+
+
+
 
 #ifdef USERPROG
     /* Owned by userprog/process.c. */
